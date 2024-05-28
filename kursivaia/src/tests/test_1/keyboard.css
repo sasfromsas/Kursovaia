@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+
+/* .VirtyalKeyboard{
+    background-color: #caa0a0;
+    width: auto;
+} */
+
+
+.OneButtonOnVirtyalKeyboard{
+    margin: 2px;
+}
