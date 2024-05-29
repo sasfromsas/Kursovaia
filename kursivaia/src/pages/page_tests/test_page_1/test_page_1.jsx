@@ -1,10 +1,15 @@
 import React from 'react';
 import Test_1 from '../../../tests/test_1/test_1';
-function Test_page_1({ updateSelectedOptions }) {
+import '.././MainPage.css'
+
+function Test_page_1({  }) {
 
 
   return (
-<Test_1/>
+    <div className="container">
+      <Test_1/>
+    </div>
+
   );
 }
 

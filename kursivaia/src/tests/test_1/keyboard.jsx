@@ -7,12 +7,12 @@ const getKeyboardLayout = (language) => {
       ru: [
         'йцукенгшщзхъ',
         'фывапролджэ',
-        'ячсмитьбю'
+        'ячсмитьбю.'
       ],
       en: [
-        'qwertyuiop',
-        'asdfghjkl',
-        'zxcvbnm'
+        'qwertyuiop[]',
+        "asdfghjkl;'",
+        'zxcvbnm,./'
       ]
     };
     return layouts[language];
@@ -29,7 +29,7 @@ const getKeyboardLayout = (language) => {
         <div className='VirtyalKeyboard'>
         {rows.map((row, index) => (
           <div key={index} >
-            <div >
+            
             {row.split('').map(letter => (
               <button
                 className='OneButtonOnVirtyalKeyboard'
@@ -42,7 +42,7 @@ const getKeyboardLayout = (language) => {
                 {letter}
               </button>
             ))}
-            </div>
+            
           </div>
         ))}
       </div>

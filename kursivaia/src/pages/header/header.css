@@ -1,0 +1,28 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    background-color: #202130;
+    width: 100vw;
+    height: auto;
+    padding: 12px;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    color: rgb(206, 137, 189);
+    font-weight: bolder;
+}
+
+.HeaderButtons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+    width: 100%;
+    /* background-color: #fff; */
+}
+
+.Logo{
+    background-color: #c05050;
+    width: 60px;
+    height: 60px;
+}
