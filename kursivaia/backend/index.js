@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
     host: 'MySQL-8.0',
     user: 'root',
     password: '',
-    database: 'praktika'
+    database: 'peripheral_trainer'
 });
 
 connection.connect((error) => {
@@ -29,30 +29,3 @@ app.listen(3002, () => {
 
 
 
-
-
-app.post('/orders', (req, res) => {
-    const { order_details } = req.body;
-    connection.query('INSERT INTO orders (order_details) VALUES (?)', [JSON.stringify(order_details)], (error, result) => {
-        if (error) {
-            return res.status(500).json({ error: error.message });
-        }
-        res.status(201).json({ message: 'Order added successfully', result });
-    });
-});
-
-
-
-
-app.get('/orders', (req, res) => {
-    connection.query('SELECT * FROM orders', (error, results) => {
-        if (error) {
-            res.status(500).json({ error: error.message });
-        } else {
-            res.json({
-                status: 200,
-                body: results
-            });
-        }
-    });
-});

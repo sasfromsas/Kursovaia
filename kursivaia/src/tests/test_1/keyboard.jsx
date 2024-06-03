@@ -31,7 +31,7 @@ const getKeyboardLayout = (language) => {
           <div key={index} >
             
             {row.split('').map(letter => (
-              <button
+              <div
                 className='OneButtonOnVirtyalKeyboard'
                 key={letter}
                 style={{ 
@@ -40,7 +40,7 @@ const getKeyboardLayout = (language) => {
                 onClick={() => onKeyPress(letter)}
               >
                 {letter}
-              </button>
+              </div>
             ))}
             
           </div>
