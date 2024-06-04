@@ -9,11 +9,14 @@ const Header = () => {
         <div className="header">
             <div className="Logo"></div>
             <div className="HeaderButtons">
-                <Link to="/selectTest">тесты</Link>
-                <p>Тесты</p>
-                <p>Ваши результаты</p>
+                <Link to="/selectTest">Тесты</Link>
+                <Link to="/results">Результаты</Link>
+                <Link to="/login">Войти</Link>
+                <Link to="/registration">Регистрация</Link>
+                {/* <p>Тесты</p> */}
+                {/* <p>Ваши результаты</p>
                 <p>Войти</p>
-                <p>Зарегистрироваться</p>
+                <p>Зарегистрироваться</p> */}
             </div>
 
         </div>
