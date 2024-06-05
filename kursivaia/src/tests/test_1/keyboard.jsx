@@ -37,7 +37,7 @@ const getKeyboardLayout = (language) => {
                 style={{ 
                   background: currentLetter === letter ? 'green' : wrongLetter === letter ? 'red' : 'initial'
                 }}
-                onClick={() => onKeyPress(letter)}
+                // onClick={() => onKeyPress(letter)}
               >
                 {letter}
               </div>
