@@ -129,3 +129,24 @@ app.post('/user/logout', (req, res) => {
         });
     });
 });
+
+
+
+
+app.get('/getResultByUserId', (req, res) => {
+    const { user_id } = req.query; // Получаем user_id из параметров запроса
+
+
+    connection.query('SELECT * FROM tests_results WHERE user_id = ?', [user_id], (error, results) => {
+        if (error) {
+            return res.status(500).json({ error: 'Ошибка при получении результатов теста' });
+        }
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'Результаты не найдены' });
+        }
+        res.status(200).json(results);
+    });
+});
+
+
+

@@ -19,15 +19,12 @@ function App() {
   return (
     <div className="App">
       
-      <body>
 
         <Header/>
-        {/* <Test_page_1/> */}
-      </body>
 
       
       <Routes>
-        <Route path='/selectTest' element={<Test_navigaton/>}></Route>
+        <Route path='/' element={<Test_navigaton/>}></Route>
         <Route path='/Test1' element={<Test_page_1/>}></Route>
         <Route path='/Test2' element={<Test_page_2/>}></Route>
         <Route path='/Test3' element={<Test_page_2/>}></Route>

@@ -3,7 +3,7 @@ import './test_2.css';
 
 const words = ["example", "random", "words", "to", "create", "sentences", "and", "so", "on", "with", "more", "words", "for", "testing", "typing", "speed", "in", "a", "react", "component"];
 const generateSentence = () => {
-  return new Array(3).fill(null).map(() => words[Math.floor(Math.random() * words.length)]).join(' ');
+  return new Array(20).fill(null).map(() => words[Math.floor(Math.random() * words.length)]).join(' ');
 };
 
 const Test_2 = () => {
