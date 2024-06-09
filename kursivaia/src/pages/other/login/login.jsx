@@ -31,6 +31,7 @@ const Login = () => {
               // document.cookie = `token=${data.token} , Name= ${data.first_name}`;
               localStorage.setItem('token', data.token);
               localStorage.setItem('userName', data.user.user_name);
+              localStorage.setItem('userId', data.user.user_id)
               // localStorage.setItem('userName', data.user.first_name);
               // setUserName( data.user.user_name);
               console.log("Name:  " + data.user.user_name);

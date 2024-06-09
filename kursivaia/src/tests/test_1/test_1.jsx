@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import VirtualKeyboard from './keyboard'
-
-
+import VirtualKeyboard from './keyboard';
 
 const Test_1 = () => {
   const [score, setScore] = useState(0);
   const [currentLetter, setCurrentLetter] = useState('');
   const [wrongLetter, setWrongLetter] = useState(null);
   const [language, setLanguage] = useState('ru');
+  const [isActive, setIsActive] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [firstLetterPressed, setFirstLetterPressed] = useState(false);
+  const [isTestCompleted, setIsTestCompleted] = useState(false);
+  const [isResultSaved, setIsResultSaved] = useState(false);
+
 
   // Генерация случайной буквы
   const generateRandomLetter = () => {
@@ -17,59 +21,141 @@ const Test_1 = () => {
 
   // Обработка нажатия клавиши
   const handleKeyPress = (letter) => {
+    if (!isActive) return;
     if (letter === currentLetter) {
-      setScore(score + 1);
+      if (!firstLetterPressed) {
+        setFirstLetterPressed(true);
+        // Убираем setIsActive(true); отсюда, так как тест уже активен
+      } else {
+        setScore((prevScore) => prevScore + 1);
+      }
       setWrongLetter(null);
       setCurrentLetter(generateRandomLetter());
-
     } else {
-      setScore(score - 1);
+      if (firstLetterPressed) {
+        setScore((prevScore) => prevScore - 1);
+      }
       setWrongLetter(letter);
     }
   };
-
-
+  
+  
 
   // Подписка на событие нажатия клавиши
   useEffect(() => {
+    if (!isActive) return;
     const handleKeyDown = (event) => {
-      // Проверяем, соответствует ли нажатая клавиша текущей букве
-      if (event.key.toLowerCase() === currentLetter) {
-        setScore(score + 1);
-        setCurrentLetter(generateRandomLetter());
-        setWrongLetter(null)
-      } else {
-        // Если нажата неправильная клавиша, уменьшаем счет
-        setScore(score - 1);
-        setWrongLetter(event.key.toLowerCase());
+      // Проверяем, является ли нажатая клавиша буквой
+      if (event.key.length === 1 && event.key.match(/[a-zа-я]/i)) {
+        handleKeyPress(event.key.toLowerCase());
       }
     };
   
     window.addEventListener('keydown', handleKeyDown);
-  
-    // Отписка от события
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [currentLetter, score]); // Добавляем score в массив зависимостей
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentLetter, isActive]);
 
-  // Инициализация первой буквы
+  // Таймер
   useEffect(() => {
-    setCurrentLetter(generateRandomLetter());
+    let interval = null;
+    if (isActive && firstLetterPressed && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((timeLeft) => timeLeft - 1);
+      }, 1000);
+    } else if (timeLeft === 0) {
+      setIsActive(false);
+      setFirstLetterPressed(false);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, firstLetterPressed, timeLeft]);
+  
+  
+
+  // Инициализация первой буквы и сброс таймера
+  useEffect(() => {
+    setTimeLeft(30);
   }, [language]);
+
+  // Начать тест
+// Начать тест
+const startTest = () => {
+  setScore(0);
+  setWrongLetter(null);
+  setFirstLetterPressed(false);
+  setTimeLeft(3); // Установите время, соответствующее полной длительности теста
+  setIsActive(true);
+  setCurrentLetter(generateRandomLetter());
+  setIsTestCompleted(false); // Сброс флага завершения теста
+  setIsResultSaved(false); // Сброс флага сохранения результатов
+};
+
+
+
+useEffect(() => {
+  if (timeLeft === 0) {
+    setIsActive(false);
+    setFirstLetterPressed(false);
+    setIsTestCompleted(true); // Установка флага завершения теста
+  }
+}, [timeLeft]);
+  
+const saveResult = () => {
+  const testId = 1;
+  const userId = localStorage.getItem('userId'); // Replace 'userId' with the actual key you use
+  const result = `{\"score\": ${score}}`;
+
+  fetch('http://localhost:3002/saveResult', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ test_id: testId, user_id: userId, result }),
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Result saved:', data);
+    setIsResultSaved(true);
+  })
+  .catch(error => {
+    console.error('Error saving result:', error);
+  });
+};
+
+useEffect(() => {
+  if (isActive) {
+    setIsResultSaved(false);
+  }
+}, [isActive]);
+
+//////////////////////////////
 
   return (
     <div>
       <h2>Тест скорости печати</h2>
       <p>Очки: {score}</p>
       <p>Нажмите на букву: {currentLetter}</p>
+      <p>Время до окончания теста: {!isActive ? '---' : !firstLetterPressed ? 'Нажмите клавишу чтобы начать' : timeLeft}</p>
       <VirtualKeyboard currentLetter={currentLetter} onKeyPress={handleKeyPress} language={language} wrongLetter={wrongLetter} />
-      <button onClick={() => setLanguage('ru')}>Русский</button>
-      <button onClick={() => setLanguage('en')}>English</button>
-      {wrongLetter}
+      
+      {!isActive && (
+        <>
+          <button onClick={() => setLanguage('ru')}>Русский</button>
+          <button onClick={() => setLanguage('en')}>English</button>
+        </>
+      )}
+      {isActive ? null : <button onClick={startTest}>СТАРТ</button>}
+      {isTestCompleted && !isResultSaved && (
+        <button onClick={saveResult}>Сохранить результат</button>
+      )}
+      {/* {wrongLetter && <p>Неправильная буква: {wrongLetter}</p>} */}
+      {/* {timeLeft === 0 && <button onClick={startTest}>Повторить тест</button>} */}
     </div>
   );
 };
-
 
 export default Test_1;

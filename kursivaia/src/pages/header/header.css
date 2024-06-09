@@ -11,18 +11,42 @@
     font-weight: bolder;
 }
 
+.headerLogo{
+    min-width: 170px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    text-wrap: nowrap;
+    /* background-color: #16b458; */
+}
+
+.Logo{
+    /* background-color: #c05050; */
+    width: 80px;
+    height: 60px;
+    background-image: url(./../../images/Logo3.png);
+    background-size:100% 100%;
+    
+    /* background-repeat:no-repeat;
+    background-position: center center; */
+}
+
+.LogoText{
+    margin-left: 5px;
+    background-image: linear-gradient(to right, #20b375, #27a1a1, #13b9ab);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
 .HeaderButtons{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     gap: 40px;
-    width: 100%;
+    width: 75%;
     /* background-color: #fff; */
 }
 
-.Logo{
-    background-color: #c05050;
-    width: 60px;
-    height: 60px;
-}

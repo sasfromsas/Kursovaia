@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './header.css';
-import { Link } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
 const Header = () => {
   // Состояние для хранения имени пользователя
   const [userName, setUserName] = useState('');
@@ -25,7 +24,12 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="Logo"></div>
+      <div className="headerLogo">
+        <div className="Logo">
+          <img src="" alt="" />
+        </div>
+        <p className='LogoText'>Dimka's Test</p>
+      </div>
       <div className="HeaderButtons">
         <Link to="/">Тесты</Link>
         <Link to="/results">Результаты</Link>
