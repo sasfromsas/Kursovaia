@@ -26,7 +26,7 @@ const Header = () => {
     <div className="header">
       <div className="headerLogo">
         <div className="Logo">
-          <img src="" alt="" />
+          {/* <img src="" alt="" /> */}
         </div>
         <p className='LogoText'>Dimka's Test</p>
       </div>

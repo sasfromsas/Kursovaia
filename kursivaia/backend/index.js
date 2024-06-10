@@ -32,12 +32,15 @@ app.listen(3002, () => {
 
 app.post('/saveResult', (req, res) => {
     const { test_id, user_id, result } = req.body;
+    // Assuming 'result' is already an integer or can be parsed as one
+    const parsedResult = parseInt(result, 10);
     const query = 'INSERT INTO tests_results (test_id, user_id, result) VALUES (?, ?, ?)';
-    connection.query(query, [test_id, user_id, JSON.stringify(result)], (error, results) => {
+    
+    connection.query(query, [test_id, user_id, parsedResult], (error, results) => {
         if (error) {
             return res.status(500).send('Ошибка при добавлении результатов теста');
         }
-        res.status(200).send('Результаты теста успешно добавлены');
+        res.status(200).json({message:'Результаты теста успешно сохранены', result: result, user_id: user_id, test_id: test_id});
     });
 });
 

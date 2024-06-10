@@ -1,6 +1,6 @@
 import React from 'react';
 import Test_1 from '../../../tests/test_1/test_1';
-import '.././MainPage.css'
+import '../../MainPage.css'
 
 function Test_page_1({  }) {
 

@@ -15,6 +15,7 @@ import Test_navigaton from './pages/other/test_navigation/test_navigation';
 import Login from './pages/other/login/login';
 import Registration from './pages/other/registration/registration';
 import Results from './pages/other/results/results';
+import Footer from './pages/footer/footer';
 function App() {
   return (
     <div className="App">
@@ -31,9 +32,9 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/registration' element={<Registration/>}></Route>
         <Route path='/results' element={<Results/>}></Route>
-
+        
       </Routes>
-
+      <Footer/>
 
     </div>
   );

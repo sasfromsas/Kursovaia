@@ -89,7 +89,7 @@ const Test_2 = () => {
       <div>
         {sentence.split('').map((char, index) => (
           <span key={index} style={{
-            backgroundColor: index === position ? (correct ? 'green' : 'red') : 'transparent'
+            backgroundColor: index === position ? (correct ? '#2afd0021' : '#fd000021') : 'transparent'
           }}>
             {char}
           </span>

@@ -1,7 +1,7 @@
 .header{
     display: flex;
     flex-direction: row;
-    background-color: #202130;
+    /* background-color: #202130; */
     width: 100vw;
     height: auto;
     padding: 12px;

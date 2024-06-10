@@ -43,6 +43,8 @@
 } */
 
 body{
-  background-color: #202130;
-  color: bisque;
+  background-color: #323437;
+  color: #646669;
+  font-weight: 950;
+  /* --font: "Roboto Mono", "Vazirmatn", monospace; */
 }
