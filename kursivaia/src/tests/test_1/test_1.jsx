@@ -102,7 +102,7 @@ useEffect(() => {
 const saveResult = () => {
   const testId = 1;
   const userId = localStorage.getItem('userId'); // Replace 'userId' with the actual key you use
-  const result = `{\"score\": ${score}}`;
+  const result = score;
 
   fetch('http://localhost:3002/saveResult', {
     method: 'POST',
