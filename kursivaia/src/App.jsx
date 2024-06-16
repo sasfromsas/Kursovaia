@@ -19,11 +19,9 @@ import Footer from './pages/footer/footer';
 function App() {
   return (
     <div className="App">
-      
 
         <Header/>
 
-      
       <Routes>
         <Route path='/' element={<Test_navigaton/>}></Route>
         <Route path='/Test1' element={<Test_page_1/>}></Route>
@@ -35,7 +33,6 @@ function App() {
         
       </Routes>
       <Footer/>
-
     </div>
   );
 }

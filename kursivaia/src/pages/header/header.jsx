@@ -31,18 +31,18 @@ const Header = () => {
         <p className='LogoText'>Dimka's Test</p>
       </div>
       <div className="HeaderButtons">
-        <Link to="/">Тесты</Link>
-        <Link to="/results">Результаты</Link>
+        <Link to="/"><p className='HeaderButtonText'>Тесты</p></Link>
+        <Link to="/results"><p className='HeaderButtonText'>Результаты</p></Link>
         {userName ? (
           <>
-            <span>{userName}</span>
+            <span className='HeaderButtonText'>{userName}</span>
             {/* <Link to="/login">Выйти</Link> */}
-            <p onClick={clearStorage}>Выйти</p>
+            <p onClick={clearStorage}><p className='HeaderButtonText'>Выйти</p></p>
           </>
         ) : (
           <>
-            <Link to="/login">Войти</Link>
-            <Link to="/registration">Регистрация</Link>
+            <Link to="/login"><p className='HeaderButtonText'>Войти</p></Link>
+            <Link to="/registration"><p className='HeaderButtonText'>Регистрация</p></Link>
           </>
         )}
       </div>

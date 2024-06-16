@@ -1,4 +1,15 @@
-.ekekek{
-    color: aqua;
-    font-size: 50px;
+
+
+.TestSelectContainer{
+    border: 1px solid #ffffff13;
+    border-radius: 10px;
+    
+}
+
+
+.TestsSelect{
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

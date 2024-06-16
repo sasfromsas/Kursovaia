@@ -9,6 +9,7 @@
     padding-right: 8vw;
     /* color: rgb(206, 137, 189); */
     font-weight: bolder;
+    
 }
 
 .headerLogo{
@@ -34,6 +35,7 @@
 
 .LogoText{
     margin-left: 5px;
+    font-size: 18px;
     background-image: linear-gradient(to right, #20b375, #27a1a1, #13b9ab);
     color: transparent;
     -webkit-background-clip: text;
@@ -47,6 +49,10 @@
     justify-content: flex-end;
     gap: 40px;
     width: 75%;
+    font-size: 18px;
     /* background-color: #fff; */
 }
 
+.HeaderButtonText{
+    font-size: 20px;
+}

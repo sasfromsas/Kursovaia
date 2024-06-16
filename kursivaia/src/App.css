@@ -48,3 +48,12 @@ body{
   font-weight: 950;
   /* --font: "Roboto Mono", "Vazirmatn", monospace; */
 }
+
+
+
+
+.App{
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}

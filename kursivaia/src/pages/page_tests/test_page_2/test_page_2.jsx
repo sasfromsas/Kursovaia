@@ -4,7 +4,9 @@ function Test_page_2({ updateSelectedOptions }) {
 
 
   return (
+<div className="container">
 <Test_2/>
+</div>
   );
 }
 

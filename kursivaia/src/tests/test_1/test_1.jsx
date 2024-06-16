@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import VirtualKeyboard from './keyboard';
+import './test_1.css'
 
 const Test_1 = () => {
   const [score, setScore] = useState(0);
@@ -136,10 +137,12 @@ useEffect(() => {
 
   return (
     <div>
+    <div className="Test1TExt">
       <h2>Тест скорости печати</h2>
       <p>Очки: {score}</p>
+      <p>Время до окончания теста: {!isActive ? '---' : timeLeft}</p>
       <p>Нажмите на букву: {currentLetter}</p>
-      <p>Время до окончания теста: {!isActive ? '---' : !firstLetterPressed ? 'Нажмите клавишу чтобы начать' : timeLeft}</p>
+    </div>
       <VirtualKeyboard currentLetter={currentLetter} onKeyPress={handleKeyPress} language={language} wrongLetter={wrongLetter} />
       
       {!isActive && (

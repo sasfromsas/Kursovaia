@@ -54,6 +54,7 @@ const Login = () => {
   };
 
   return (
+    <div className="content">
       <div className='form'>
           <p align = "center">Login</p>
           <div className='login'>
@@ -64,7 +65,7 @@ const Login = () => {
           
           
       </div>
-      
+      </div>
   );
 };
 

@@ -36,7 +36,7 @@ const Registration = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={handleSubmit}>
         <h1>Регистрация неовых пользователей</h1>
         <input type="text" name="user_name" value={formData.firstName} onChange={handleChange} placeholder="Имя" required />

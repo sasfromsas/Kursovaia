@@ -11,11 +11,24 @@ import VirtualKeyboard from '../../../tests/test_1/keyboard';
     return (
         <div>
           <div className="container">
-            <p>Выберите тест</p>
-            {/* <VirtualKeyboard /> */}
-            <Link to="/Test1" className='ekekek'><p>Тест1</p></Link>
-            <Link to="/Test2" className='ekekek'><p>Тест2</p></Link>
-            <Link to="/Test3" className='ekekek'><p>Тест3</p></Link>
+            <p style={{marginLeft:'auto', marginRight:'auto'}}>Выберите тест</p>
+              <div className="TestsSelect">
+                <Link to="/Test1" className='ekekek'>
+                  <div className="TestSelectContainer">
+                    <p style={{marginLeft:'30px'}}>Расположение кнопок</p>
+                  </div>
+                </Link>
+                <Link to="/Test2" className='ekekek'>
+                  <div className="TestSelectContainer">
+                    <p style={{marginLeft:'30px'}}>Скоропечатание</p>
+                  </div>
+                </Link>
+                <Link to="/Test3" className='ekekek'>
+                  <div className="TestSelectContainer">
+                    <p style={{marginLeft:'30px'}}>Владение мышью</p>
+                  </div>
+                </Link>
+              </div>
             </div>
         </div>
     );
