@@ -3,7 +3,15 @@
 }
 
 .TextLine{
+    margin-top: 20px;
     border: 1px solid rgba(255, 255, 255, 0.301); 
     border-radius: 10px;
     padding: 20px;
+}
+
+.Test2_TopText{
+    font-size: 20px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
 }

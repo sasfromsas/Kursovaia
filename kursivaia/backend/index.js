@@ -33,7 +33,7 @@ app.listen(3002, () => {
 app.post('/saveResult', (req, res) => {
     const { test_id, user_id, result } = req.body;
     // Assuming 'result' is already an integer or can be parsed as one
-    const parsedResult = parseInt(result, 10);
+    const parsedResult = parseFloat(result, 10);
     const query = 'INSERT INTO tests_results (test_id, user_id, result) VALUES (?, ?, ?)';
     
     connection.query(query, [test_id, user_id, parsedResult], (error, results) => {

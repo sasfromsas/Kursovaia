@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './results.css'
+import { Link } from 'react-router-dom'; // Make sure to import Link from react-router-dom
+import './results.css';
 
 const Results = () => {
   const [testResults, setTestResults] = useState({});
@@ -9,9 +10,11 @@ const Results = () => {
     3: 'Название Теста 3'
     // Добавьте больше тестов и их названий здесь
   });
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
   useEffect(() => {
     const userID = localStorage.getItem('userId');
+    setIsUserAuthenticated(!!userID);
     if (userID) {
       fetch(`http://localhost:3002/getResultByUserId?user_id=${userID}`)
         .then(response => response.json())
@@ -32,24 +35,45 @@ const Results = () => {
     }
   }, []);
 
+  const renderContent = () => {
+    if (isUserAuthenticated) {
+      if (Object.keys(testResults).length === 0) {
+        return (
+          <p style={{fontSize:'30px'}}>
+            Похоже, вы пока не сохранили ни одного результата. Вы можете сделать это после прохождения одного из 
+            <Link to="/" style={{color:'#acacac'}}> тестов</Link>.
+          </p>
+        );
+      } else {
+        return Object.keys(testResults).map((testID) => (
+          <div key={testID} className='OneTestResult'>
+            <h3>{testNames[testID]}</h3>
+            <ol>
+              {testResults[testID].map((result, index) => (
+                <li key={index}>Результат: {result}</li>
+              ))}
+            </ol>
+          </div>
+        ));
+      }
+    } else {
+      return (
+        <p style={{fontSize:'30px'}}>
+          Для просмотра и сохранения результатов необходимо 
+          <Link to="/registration" style={{color:'#acacac'}}> зарегистрироваться</Link> или 
+          <Link to="/login" style={{color:'#acacac'}}> войти</Link> в свой профиль, однако вы всегда можете пройти любой из 
+          <Link to="/" style={{color:'#acacac'}}> тестов</Link>.
+        </p>
+      );
+    }
+  };
+
   return (
-    <div>
-      <div className="container">
+    <div className="container">
       <h1>Ваши результаты</h1>
-      {Object.keys(testResults).map((testID) => (
-        <div key={testID} className='OneTestResult'>
-          <h3>{testNames[testID]}</h3>
-          <ol>
-            {testResults[testID].map((result, index) => (
-              <li key={index}>Результат: {result}</li>
-            ))}
-          </ol>
-        </div>
-      ))}
-      </div>
+      {renderContent()}
     </div>
   );
 };
 
 export default Results;
-
