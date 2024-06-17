@@ -10,7 +10,8 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    gap: 30px;
+    justify-content: space-around;
+    /* gap: 30px; */
     /* background-color: #fff; */
     max-width: 600px;
     width: 100vw;
