@@ -27,7 +27,6 @@ const Test_1 = () => {
     if (letter === currentLetter) {
       if (!firstLetterPressed) {
         setFirstLetterPressed(true);
-        // Убираем setIsActive(true); отсюда, так как тест уже активен
       } else {
         setScore((prevScore) => prevScore + 1);
       }
@@ -84,7 +83,7 @@ const startTest = () => {
   setScore(0);
   setWrongLetter(null);
   setFirstLetterPressed(false);
-  setTimeLeft(3); // Установите время, соответствующее полной длительности теста
+  setTimeLeft(30); // Установите время, соответствующее полной длительности теста
   setIsActive(true);
   setCurrentLetter(generateRandomLetter());
   setIsTestCompleted(false); // Сброс флага завершения теста
@@ -139,12 +138,12 @@ useEffect(() => {
   return (
     <div>
     <div className="Test1TExt">
-      <h2>Тест скорости печати</h2>
+      <h1 style={{textAlign:'center'}}>Тест скорости печати</h1>
       <p>Очки: {score}</p>
       <p>Время до окончания теста: {!isActive ? 'Нажмите старт' : timeLeft}</p>
       <p>Нажмите на букву: {currentLetter}</p>
     </div>
-      <VirtualKeyboard currentLetter={currentLetter} onKeyPress={handleKeyPress} language={language} wrongLetter={wrongLetter} />
+    <VirtualKeyboard currentLetter={currentLetter} onKeyPress={handleKeyPress} language={language} wrongLetter={wrongLetter} />
       
       <div className='BottomButtons'>
       {!isActive && (
@@ -154,8 +153,8 @@ useEffect(() => {
         </>
       )}
       {isActive ? null : <button onClick={startTest}>СТАРТ</button>}
-      {isTestCompleted && !isResultSaved && (
-        <button onClick={saveResult}>Сохранить результат</button>
+      {isTestCompleted && !isResultSaved && localStorage.getItem('userId') && (
+          <button onClick={saveResult}>Сохранить результат</button>
       )}
       </div>
 

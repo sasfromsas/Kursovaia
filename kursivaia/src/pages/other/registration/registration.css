@@ -1,0 +1,32 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    width: 100vw;
+    background-color: #2e3242;
+    border-radius: 10px;
+    padding: 20px;
+    margin: auto;
+}
+
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input{
+    border: 0;
+    padding: 10px;
+    min-height: 30px;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 8px;
+    color: #2e3242;
+    background-color: #969696;
+}
+
+input:focus {
+    background-color: #838383;
+}

@@ -3,13 +3,14 @@
     flex-direction: row;
     /* background-color: #202130; */
     width: 100vw;
+    max-height: 100px;
     height: auto;
     padding: 12px;
     padding-left: 8vw;
     padding-right: 8vw;
     /* color: rgb(206, 137, 189); */
     font-weight: bolder;
-    
+    /* border-bottom: 1px solid rgb(88, 88, 88); */
 }
 
 .headerLogo{

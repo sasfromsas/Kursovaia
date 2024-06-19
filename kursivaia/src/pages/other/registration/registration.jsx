@@ -36,15 +36,15 @@ const Registration = () => {
   };
 
   return (
-    <div className='container'>
-      <form onSubmit={handleSubmit}>
-        <h1>Регистрация неовых пользователей</h1>
+    <div className='form'>
+      <form onSubmit={handleSubmit} className='registerForm'>
+        <h1 style={{textAlign:'center'}}>Регистрация</h1>
         <input type="text" name="user_name" value={formData.firstName} onChange={handleChange} placeholder="Имя" required />
-        <input type="email" name="user_email" value={formData.email} onChange={handleChange} placeholder="Email" required />
-        <input type="password" name="user_password" value={formData.password} onChange={handleChange} placeholder="Password" required />
-        <button type="submit">Register</button>
+        <input type="email" name="user_email" value={formData.email} onChange={handleChange} placeholder="Почта" required />
+        <input type="password" name="user_password" value={formData.password} onChange={handleChange} placeholder="Пароль" required />
+        <button type="submit">Зарегистрироваться</button>
       </form>
-      <Link to="/login"><p>уже зарегестрированы?</p></Link>
+      <Link to="/login"><p style={{fontSize:'16px', textAlign:'end'}}>уже зарегестрированы?</p></Link>
     </div>
   );
 };

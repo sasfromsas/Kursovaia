@@ -54,17 +54,15 @@ const Login = () => {
   };
 
   return (
-    <div className="content">
+
       <div className='form'>
-          <p align = "center">Login</p>
+          <p align = "center">Авторизация</p>
           <div className='login'>
-              <input type="text" placeholder="Email" value={user_email} onChange={(e) => setEmail(e.target.value)} />
-              <input type="password" placeholder="Password" value={user_password} onChange={(e) => setPassword(e.target.value)} />
-              <button onClick={handleLogin}>Подтвердить</button>
+              <input type="text" placeholder="Почта" value={user_email} onChange={(e) => setEmail(e.target.value)} />
+              <input type="password" placeholder="Пароль" value={user_password} onChange={(e) => setPassword(e.target.value)} />
           </div>
-          
-          
-      </div>
+          <button onClick={handleLogin}>Войти</button>
+
       </div>
   );
 };

@@ -13,17 +13,17 @@ import VirtualKeyboard from '../../../tests/test_1/keyboard';
           <div className="container">
             <p style={{marginLeft:'auto', marginRight:'auto'}}>Выберите тест</p>
               <div className="TestsSelect">
-                <Link to="/Test1" className='ekekek'>
+                <Link to="/Test1">
                   <div className="TestSelectContainer">
                     <p style={{marginLeft:'30px'}}>Расположение кнопок</p>
                   </div>
                 </Link>
-                <Link to="/Test2" className='ekekek'>
+                <Link to="/Test2">
                   <div className="TestSelectContainer">
                     <p style={{marginLeft:'30px'}}>Скоропечатание</p>
                   </div>
                 </Link>
-                <Link to="/Test3" className='ekekek'>
+                <Link to="/Test3">
                   <div className="TestSelectContainer">
                     <p style={{marginLeft:'30px'}}>Владение мышью</p>
                   </div>
@@ -35,3 +35,5 @@ import VirtualKeyboard from '../../../tests/test_1/keyboard';
   };
 
 export default Test_navigaton;
+
+

@@ -165,18 +165,18 @@ return () => {
       </div>
 
       {!testStarted && !testCompleted && ( 
-        <button  onClick={toggleLanguage}>
+        <button style={{marginTop:'40px' }} onClick={toggleLanguage}>
           {language === 'en' ? 'Русский' : 'English'}
         </button>
       )}
 
       {testCompleted && ( // Рендер кнопки "Заново" только если тест завершен
-      <>
+      <div className='Test2BottomButtons'>
         <button onClick={resetTest}>Заново</button>
         {testCompleted && !isResultSaved && (
         <button onClick={saveResult}>Сохранить результат</button>
         )}
-      </>
+      </div>
       )}
 
 

@@ -5,9 +5,9 @@ import './results.css';
 const Results = () => {
   const [testResults, setTestResults] = useState({});
   const [testNames, setTestNames] = useState({
-    1: 'Тест 1 - слепая печать',
-    2: 'Тест 2 - набор текста',
-    3: 'Название Теста 3'
+    1: 'Слепая печать',
+    2: 'Набор текста (в секундах)',
+    3: 'Владение мышью'
     // Добавьте больше тестов и их названий здесь
   });
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
@@ -19,7 +19,6 @@ const Results = () => {
       fetch(`http://localhost:3002/getResultByUserId?user_id=${userID}`)
         .then(response => response.json())
         .then(data => {
-          // Группировка результатов по test_id
           const groupedResults = data.reduce((acc, current) => {
             const { test_id, result } = current;
             if (!acc[test_id]) {
@@ -28,7 +27,6 @@ const Results = () => {
             acc[test_id].push(result);
             return acc;
           }, {});
-
           setTestResults(groupedResults);
         })
         .catch(error => console.error('Ошибка при получении результатов теста:', error));
@@ -39,7 +37,7 @@ const Results = () => {
     if (isUserAuthenticated) {
       if (Object.keys(testResults).length === 0) {
         return (
-          <p style={{fontSize:'30px'}}>
+          <p style={{fontSize:'30px'} }>
             Похоже, вы пока не сохранили ни одного результата. Вы можете сделать это после прохождения одного из 
             <Link to="/" style={{color:'#acacac'}}> тестов</Link>.
           </p>
@@ -47,10 +45,10 @@ const Results = () => {
       } else {
         return Object.keys(testResults).map((testID) => (
           <div key={testID} className='OneTestResult'>
-            <h3>{testNames[testID]}</h3>
+            <h3 style={{fontSize:'30px'}}>{testNames[testID]}</h3>
             <ol>
               {testResults[testID].map((result, index) => (
-                <li key={index}>Результат: {result}</li>
+                <li style={{fontSize:'25px'}} key={index}>Результат: {result}</li>
               ))}
             </ol>
           </div>

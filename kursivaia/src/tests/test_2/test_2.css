@@ -16,3 +16,13 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+
+.Test2BottomButtons{
+    width: 90%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
