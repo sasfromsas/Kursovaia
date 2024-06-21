@@ -16,17 +16,50 @@ const Header = () => {
     }
   }, [localStorage.getItem('userName')]);
 
-  const clearStorage=()=>{
+  const clearStorage=()=>{   
+
+
+    const token = localStorage.getItem('token');
+  
+    fetch('http://localhost:3002/user/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Токен удалён:', data);
+    })
+    .catch(error => {
+      console.error('Ошибка выхода:', error);
+    });
+
+
     localStorage.clear();
     navigate('/login')
     setUserName(null)
+
+
+
+
+  
+
+
+
+
   }
 
   return (
     <div className="header">
       <div className="headerLogo">
         <div className="Logo">
-          {/* <img src="" alt="" /> */}
         </div>
         <p className='LogoText'>Dimka's Test</p>
       </div>

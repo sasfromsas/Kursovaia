@@ -93,10 +93,10 @@ const Test_3 = () => {
   };
 
   const handleRestartClick = () => {
-    setIsActive(false); // Переносим сброс isActive сюда
+    setIsActive(false);
     setClickCount(0);
     setMissCount(0);
-    isResultSaved(false)
+    setIsResultSaved(false);
     // setTimeLeft(30);
     // Также нужно сбросить позиции кругов, если это требуется
   };

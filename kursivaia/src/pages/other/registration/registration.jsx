@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './registration.css'
 import { Routes, Route, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Registration = () => {
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     
@@ -28,10 +30,9 @@ const Registration = () => {
       });
       const data = await response.json();
       console.log(data);
-      // Handle success or display any error messages
+      navigate('/login');
     } catch (error) {
       console.error('Error:', error);
-      // Handle error
     }
   };
 

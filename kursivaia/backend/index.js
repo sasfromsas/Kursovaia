@@ -1,20 +1,16 @@
 const cors = require('cors');
 const mysql = require('mysql');
-const express = require('express')
 const jwt = require('jsonwebtoken');
-
+const express = require('express')
 const app = express();
-
 app.use(cors());
 app.use(express.json());
-
 const connection = mysql.createConnection({
     host: 'MySQL-8.0',
     user: 'root',
     password: '',
     database: 'peripheral_trainer'
 });
-
 connection.connect((error) => {
     if (error) {
         console.error('Ошибка подключения:', error);
@@ -22,8 +18,6 @@ connection.connect((error) => {
         console.log('Подключено к базе данных MySQL');
     }
 });
-
-
 app.listen(3002, () => {
     console.log('Server is running on http://localhost:3002');
 });
@@ -32,10 +26,8 @@ app.listen(3002, () => {
 
 app.post('/saveResult', (req, res) => {
     const { test_id, user_id, result } = req.body;
-    // Assuming 'result' is already an integer or can be parsed as one
     const parsedResult = parseFloat(result, 10);
     const query = 'INSERT INTO tests_results (test_id, user_id, result) VALUES (?, ?, ?)';
-    
     connection.query(query, [test_id, user_id, parsedResult], (error, results) => {
         if (error) {
             return res.status(500).send('Ошибка при добавлении результатов теста');
@@ -47,18 +39,14 @@ app.post('/saveResult', (req, res) => {
 
 app.post('/users/registration', (req, res) => {
     const { user_name, user_email, user_password, token } = req.body;
-    
-    // Check if the email already exists in the database
+
     connection.query('SELECT * FROM users WHERE user_email = ?', [user_email], (error, results) => {
         if (error) {
             return res.status(500).json({ error: error.message });
         }
-
         if (results.length > 0) {
             return res.status(400).json({ error: 'User with the same email already exists' });
         }
-
-        // Insert the user into the database if no duplicate found
         connection.query('INSERT INTO Users (user_name, user_email, user_password, token) VALUES (?, ?, ?, ?)', [user_name, user_email, user_password, token], (error, result) => {
             if (error) {
                 return res.status(500).json({ error: error.message });
